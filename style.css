@@ -73,6 +73,7 @@ main{
 }
 .heading-img{
     margin-right: .6rem;
+    width: 6vw;
 }
 
 .main-container{
@@ -112,9 +113,7 @@ a{
     width: 150px;
     margin: 2rem  0;
 }
-.link{
-    
-}
+
 .img-github{
     width: 4.4em;
     height: 4.4rem;
