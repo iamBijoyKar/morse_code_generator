@@ -1,13 +1,4 @@
 
-function toLowerCase(text){
-    let result=''
-    for(let i=0;i<text.length;i++){
-        if(text[i]>='A' && text<='Z'){
-            result+=String(Number(text)+32);
-        }
-    }
-    return result
-}
 let morseJson = {
     "0": "-----",
     "1": ".----",
@@ -54,30 +45,27 @@ let morseJson = {
     "@": ".--.-.",
     "(": "-.--.",
     ")": "-.--.-"
-  }
-  
-console.log(typeof(morseJson))
-console.log(morseJson)
-// const morseJson=JSON.parse(rawJson)
-  
-function generate(){
-    let text=document.getElementById("text").value
+}
+
+document.getElementById("text").addEventListener('input',(event)=>{
+    let text = event.target.value
     let filteredText=text.toLowerCase()
     let result="";
     for(let i=0;i<filteredText.length;i++){
+        
         if(filteredText[i]==" "){
-            result+="/";
+            result += "/";
         }
         else{
-            result+=morseJson[filteredText[i]];
+            if (morseJson[filteredText[i]] === undefined){
+                console.log(filteredText[i],morseJson[i])
+                result += filteredText[i]
+            }
+            else{
+                result += morseJson[filteredText[i]];
+            }
         }
         result+=' ';
     }
-    const output=document.getElementById('morse').value=result
-    console.log(result)
-    console.log(filteredText)
-}
-
-setInterval(generate,1000)
-// console.log(morseJson);
-// console.log(typeof(morseJson));
+    document.getElementById('morse').value = result
+})
